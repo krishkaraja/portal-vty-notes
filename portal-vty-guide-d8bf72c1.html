@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+  <title>V体育 · 信息索引专页</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #f5fafc;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      color: #1f2a2e;
+      line-height: 1.6;
+      padding: 0 1.25rem 3rem;
+    }
+
+    .page {
+      max-width: 1040px;
+      margin: 0 auto;
+    }
+
+    /* 首页横幅 —— 杂志式跨屏模块 */
+    .hero {
+      margin: 1.8rem 0 2.8rem;
+      padding: 2.8rem 2rem;
+      background: linear-gradient(145deg, #d9f0f5 0%, #b8dfe8 100%);
+      border-radius: 42px 16px 42px 16px;
+      box-shadow: 0 12px 28px rgba(32, 88, 92, 0.10);
+      position: relative;
+      overflow: hidden;
+      transition: box-shadow 0.3s;
+    }
+    .hero:before {
+      content: '';
+      position: absolute;
+      top: -20%;
+      right: -10%;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(0,188,180,0.08) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #054e5a;
+      margin-bottom: 0.9rem;
+      line-height: 1.2;
+    }
+    .hero p {
+      max-width: 700px;
+      font-size: 1.1rem;
+      color: #1b444b;
+      background: rgba(255,255,255,0.4);
+      backdrop-filter: blur(2px);
+      padding: 1rem 1.3rem;
+      border-radius: 40px 12px 40px 12px;
+      border-left: 4px solid #09919b;
+      margin-top: 0.8rem;
+    }
+    .hero .badge {
+      display: inline-block;
+      margin-top: 1.4rem;
+      background: #0a7a82;
+      color: #e7f7f8;
+      font-size: 0.8rem;
+      padding: 0.3rem 1rem;
+      border-radius: 30px;
+      letter-spacing: 0.3px;
+    }
+
+    /* 背景说明 —— 卡片网格风格 */
+    .context-card {
+      background: #ffffffd9;
+      backdrop-filter: blur(4px);
+      border-radius: 24px;
+      padding: 2rem 1.8rem;
+      margin-bottom: 2.8rem;
+      box-shadow: 0 4px 14px rgba(8, 108, 112, 0.06);
+      border: 1px solid #d1ecee;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      gap: 1rem 2rem;
+    }
+    .context-card .icon-zone {
+      background: #c5e8ed;
+      width: 60px;
+      height: 60px;
+      border-radius: 60% 40% 40% 60% / 50% 40% 60% 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #06656d;
+      font-size: 1.6rem;
+      flex-shrink: 0;
+    }
+    .context-card .desc {
+      flex: 1;
+      min-width: 200px;
+    }
+    .context-card .desc h2 {
+      font-size: 1.45rem;
+      font-weight: 500;
+      color: #054e5a;
+      margin-bottom: 0.6rem;
+      border-bottom: 2px solid #afe0e5;
+      display: inline-block;
+      padding-bottom: 0.1rem;
+    }
+    .context-card .desc p {
+      color: #2b4b52;
+    }
+
+    /* 三段自然介绍 —— 网格卡片 */
+    .grid-three {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.8rem;
+      margin: 2.2rem 0 2.8rem;
+    }
+    .feature-card {
+      background: #ffffff;
+      border-radius: 30px 12px 30px 12px;
+      padding: 1.8rem 1.5rem 2rem;
+      box-shadow: 0 6px 18px rgba(12, 95, 100, 0.05);
+      border: 1px solid #d6f0f2;
+      transition: transform 0.2s, box-shadow 0.25s;
+    }
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 28px rgba(0, 100, 102, 0.08);
+    }
+    .feature-card .card-num {
+      display: inline-block;
+      font-size: 0.8rem;
+      background: #c1e4e9;
+      color: #085a62;
+      padding: 0.2rem 0.9rem;
+      border-radius: 30px;
+      margin-bottom: 0.8rem;
+      font-weight: 500;
+    }
+    .feature-card h3 {
+      font-size: 1.2rem;
+      font-weight: 550;
+      color: #0a5b63;
+      margin: 0.6rem 0 0.7rem;
+    }
+    .feature-card p {
+      color: #2f5157;
+      font-size: 0.97rem;
+    }
+    .feature-card .card-tag {
+      display: inline-block;
+      margin-top: 1rem;
+      font-size: 0.75rem;
+      color: #0e7983;
+      border: 1px solid #b1dde2;
+      padding: 0.2rem 0.8rem;
+      border-radius: 40px;
+      background: #effbfd;
+    }
+
+    /* 页尾访问提示 —— 带链接的句子 */
+    .footer-note {
+      margin-top: 2.5rem;
+      padding: 2rem 1.8rem;
+      background: #ebf6f8;
+      border-radius: 40px 8px 40px 8px;
+      border-left: 6px solid #0f868f;
+      box-shadow: 0 2px 8px rgba(7, 90, 92, 0.04);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-note .text {
+      font-size: 1.05rem;
+      color: #134e56;
+      line-height: 1.7;
+      max-width: 70%;
+    }
+    .footer-note .text a {
+      color: #0b7984;
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 2px solid #87ced6;
+      padding-bottom: 1px;
+      transition: border 0.2s, color 0.2s;
+    }
+    .footer-note .text a:hover {
+      color: #043f47;
+      border-bottom-color: #0b7984;
+    }
+    .footer-note .meta {
+      font-size: 0.85rem;
+      color: #2b6f77;
+      background: #d3edf1;
+      padding: 0.3rem 1rem;
+      border-radius: 40px;
+      white-space: nowrap;
+    }
+    /*  FAQ 摘要小模块 */
+    .faq-mini {
+      margin: 2.8rem 0 1rem;
+      padding: 1.5rem 1.8rem;
+      background: #f0f9fb;
+      border-radius: 20px;
+    }
+    .faq-mini summary {
+      font-weight: 540;
+      color: #0f5d65;
+      cursor: pointer;
+      padding: 0.3rem 0;
+      font-size: 1rem;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .faq-mini summary::before {
+      content: '▾';
+      color: #11858f;
+      font-size: 1.2rem;
+    }
+    .faq-mini details[open] summary::before {
+      content: '▴';
+    }
+    .faq-mini .faq-content {
+      margin-top: 0.8rem;
+      padding-left: 0.3rem;
+      color: #21565e;
+      font-size: 0.95rem;
+      border-left: 3px solid #b4e0e5;
+      padding-left: 1rem;
+    }
+
+    /* 响应式细节 */
+    @media (max-width: 640px) {
+      body { padding: 0 0.8rem 2.5rem; }
+      .hero { padding: 2rem 1.2rem; }
+      .hero h1 { font-size: 1.7rem; }
+      .hero p { font-size: 0.98rem; }
+      .grid-three { gap: 1.2rem; }
+      .footer-note { flex-direction: column; align-items: flex-start; gap: 0.8rem; }
+      .footer-note .text { max-width: 100%; }
+      .context-card { padding: 1.6rem 1.2rem; }
+    }
+
+    @media (max-width: 440px) {
+      .hero h1 { font-size: 1.5rem; }
+      .feature-card { padding: 1.3rem; }
+    }
+
+    /* 小点缀 */
+    .accent-dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background: #1da6b0;
+      border-radius: 50%;
+      margin-right: 6px;
+      opacity: 0.5;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- 首页横幅 -->
+  <section class="hero">
+    <h1>V体育 · 资料整理笔记</h1>
+    <p>从信息索引出发，一点点把零散的赛事档案、运动数据库和社区记录归拢到一起。就像搭建一个安静的数字阅览室。</p>
+    <span class="badge">✦ 杂志风格 · 专题整理</span>
+  </section>
+
+  <!-- 背景说明（卡片网格） -->
+  <div class="context-card">
+    <div class="icon-zone">📋</div>
+    <div class="desc">
+      <h2>为什么做这个索引页</h2>
+      <p>浏览体育资讯时，常常觉得信息散落在不同角落：赛程、历史数据、选手故事……<br>
+      这个页面更像一个索引台，把与 <strong>V体育</strong> 相关的内容线索陈列出来。不追求快，但求清晰可循。</p>
+    </div>
+  </div>
+
+  <!-- 三段自然介绍（网格卡片） -->
+  <div class="grid-three">
+    <div class="feature-card">
+      <span class="card-num">01 档案</span>
+      <h3>赛事时间线</h3>
+      <p>整理了近几年的主要赛事时间轴、场地变迁与规则调整记录。适合快速回顾或对照查阅。</p>
+      <span class="card-tag">📅 跨度 2019–2025</span>
+    </div>
+    <div class="feature-card">
+      <span class="card-num">02 索引</span>
+      <h3>运动项目分类</h3>
+      <p>按项目领域拆出多个子卡片：团队对抗、耐力竞速、技巧评分……每类附有核心术语说明。</p>
+      <span class="card-tag">🏅 8 个大项</span>
+    </div>
+    <div class="feature-card">
+      <span class="card-num">03 社区</span>
+      <h3>讨论与记录</h3>
+      <p>收集了论坛、播客、笔记中的片段，保留不同视角的观察。不评价，只归档。</p>
+      <span class="card-tag">💬 30+ 来源</span>
+    </div>
+  </div>
+
+  <!-- FAQ 摘要 -->
+  <div class="faq-mini">
+    <details open>
+      <summary>FAQ 摘要：关于这份索引</summary>
+      <div class="faq-content">
+        <p><span class="accent-dot"></span>内容来源？—— 公开数据、社区讨论、个人笔记整理，不带主观引导。</p>
+        <p><span class="accent-dot"></span>更新频率？—— 不定期增补，保持索引的时效性与简洁性。</p>
+        <p><span class="accent-dot"></span>和 <strong>V体育</strong> 的关系？—— 作为信息聚合的参考基点，方便感兴趣的人自行探索。</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- 页尾访问提示 · 自然嵌入链接 -->
+  <div class="footer-note">
+    <div class="text">
+      若想进一步翻阅原始资料、赛事档案及社区讨论，可前往
+      <a href="https://portal-vty.com">V体育</a>
+      查看持续更新的索引库。
+    </div>
+    <div class="meta">📌 信息索引 · 专题页</div>
+  </div>
+
+  <!-- 极简脚标 (风格统一) -->
+  <div style="margin-top: 2.2rem; border-top: 1px solid #cee9ec; padding-top: 1.2rem; font-size: 0.8rem; color: #486b72; text-align: center;">
+    <span>整理为本 · 索引友好</span>
+    <span style="margin: 0 0.6rem;">·</span>
+    <span>v2405</span>
+  </div>
+</div>
+</body>
+</html>
